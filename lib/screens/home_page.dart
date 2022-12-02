@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notice_board_app/screens/post_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,12 +10,22 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("掲示板アプリ"),
       ),
-      body: const Center(
-        child: Text("ここに投稿を表示"),
+      body: const Padding(
+        padding: EdgeInsets.all(20),
+        child: Center(
+          child: Text("ここに投稿を表示"),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.edit),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const PostPage(),
+            ),
+          );
+        },
       ),
     );
   }
