@@ -7,35 +7,48 @@ class PostTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const CircleAvatar(
-          backgroundImage: NetworkImage(
-              'https://pbs.twimg.com/profile_images/1594348657695854593/nYwKAqc3_400x400.jpg'),
+    return Container(
+      decoration: const BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: Colors.grey,
+            width: 1,
+          ),
         ),
-        const SizedBox(width: 15),
-        Column(
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const CircleAvatar(
+              backgroundImage: NetworkImage(
+                  'https://pbs.twimg.com/profile_images/1594348657695854593/nYwKAqc3_400x400.jpg'),
+            ),
+            const SizedBox(width: 15),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'さば@プログラミング勉強中',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Row(
+                  children: [
+                    const Text(
+                      'さば@プログラミング勉強中',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(width: 14),
+                    Text(
+                      '2022/12/03',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 14),
-                Text(
-                  '2022/12/03',
-                  style: TextStyle(color: Colors.grey[600]),
-                ),
+                const SizedBox(height: 8),
+                const Text('Flutter学習中！'),
               ],
             ),
-            const SizedBox(height: 8),
-            const Text('Flutter学習中！'),
           ],
         ),
-      ],
+      ),
     );
   }
 }

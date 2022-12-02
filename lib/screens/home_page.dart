@@ -17,6 +17,8 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: const [
               PostTile(),
+              PostTile(),
+              PostTile(),
             ],
           ),
         ),
