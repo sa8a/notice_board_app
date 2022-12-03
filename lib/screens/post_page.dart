@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notice_board_app/model/post.dart';
+import 'package:notice_board_app/screens/home_page.dart';
 import 'package:notice_board_app/widgets/empty_appbar.dart';
 
 class PostPage extends StatefulWidget {
@@ -11,6 +13,7 @@ class PostPage extends StatefulWidget {
 class _PostPageState extends State<PostPage> {
   final TextEditingController _textEditingController = TextEditingController();
   String _postContent = '';
+  final postList = Post.postList();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +65,18 @@ class _PostPageState extends State<PostPage> {
                         child: const Text('キャンセル'),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // print(_postContent);
+                          _addPost(_postContent);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(
+                                newPostList: postList,
+                              ),
+                            ),
+                          );
+                        },
                         child: const Text('投稿する'),
                       ),
                     ],
@@ -74,5 +88,17 @@ class _PostPageState extends State<PostPage> {
         ),
       ),
     );
+  }
+
+  void _addPost(String _postContent) {
+    setState(() {
+      postList.add(
+        Post(
+          id: DateTime.now().millisecondsSinceEpoch.toString(),
+          postText: _postContent,
+        ),
+      );
+    });
+    _textEditingController.clear();
   }
 }

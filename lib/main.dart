@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:notice_board_app/model/post.dart';
 import 'package:notice_board_app/screens/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final postList = Post.postList();
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: '掲示板アプリ',
       theme: ThemeData(primaryColor: Colors.blue),
-      home: const HomePage(),
+      home: HomePage(
+        newPostList: postList,
+      ),
     );
   }
 }
