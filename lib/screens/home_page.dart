@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:notice_board_app/model/post.dart';
 import 'package:notice_board_app/screens/post_page.dart';
 import 'package:notice_board_app/widgets/post_tile.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final postList = Post.postList();
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +21,14 @@ class HomePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: const [
-              PostTile(),
+        child: Expanded(
+          child: ListView(
+            children: [
+              // PostTile(),
+              for (Post post in postList.reversed)
+                PostTile(
+                  post: post,
+                ),
             ],
           ),
         ),

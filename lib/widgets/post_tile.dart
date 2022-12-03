@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:notice_board_app/model/post.dart';
 
 class PostTile extends StatelessWidget {
+  final Post post;
+
   const PostTile({
     Key? key,
+    required this.post,
   }) : super(key: key);
 
   @override
@@ -43,7 +47,7 @@ class PostTile extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-                const Text('Flutter学習中！'),
+                Text(post.postText.toString()),
               ],
             ),
           ],
