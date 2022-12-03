@@ -1,29 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:notice_board_app/model/post.dart';
 import 'package:notice_board_app/screens/post_page.dart';
 import 'package:notice_board_app/widgets/post_tile.dart';
 
 class HomePage extends StatefulWidget {
-  // 画面遷移元からのデータを受け取る変数
-  final List newPostList;
-
-  const HomePage({super.key, required this.newPostList});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  // 管理する変数
-  late List newPostList;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // 受け取ったデータを管理する変数に格納
-    newPostList = widget.newPostList;
-  }
+  final List posts = [];
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +22,8 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(20),
         child: Expanded(
           child: ListView(
-            children: [
-              // PostTile(),
-              for (Post post in newPostList.reversed)
-                PostTile(
-                  post: post,
-                ),
+            children: const [
+              PostTile(),
             ],
           ),
         ),
