@@ -13,11 +13,9 @@ class HomePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Center(
+        child: SingleChildScrollView(
           child: Column(
             children: const [
-              PostTile(),
-              PostTile(),
               PostTile(),
             ],
           ),
